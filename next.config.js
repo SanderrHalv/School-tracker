@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    appDir: true, // ✅ Ensures Next.js uses app directory correctly
-  },
+  reactStrictMode: true, // ✅ Keeps React strict mode
+  swcMinify: true,       // ✅ Ensures better performance
 };
 
 module.exports = nextConfig;
