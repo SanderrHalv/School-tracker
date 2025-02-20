@@ -61,11 +61,9 @@ export default function LoginPage() {
         </form>
         <hr className="mt-6 rounded"></hr>
         <span className="mt-3 dark:text-white">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-blue-500 hover:underline">Create account</a>
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-500 hover:underline">Create account</a>
         </span>
-
-
       </div>
     </div>
   );
