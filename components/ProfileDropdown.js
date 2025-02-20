@@ -2,24 +2,15 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import { useRouter } from "next/navigation";
+import { useDarkMode } from "../context/DarkModeContext"; // Import Dark Mode Context
 
 export default function ProfileDropdown({ user }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, setIsDarkMode } = useDarkMode(); // Use Dark Mode Context
   const router = useRouter();
 
-  // Get display name (default to "User" if not set)
   const displayName = user?.user_metadata?.display_name || "User";
   const avatarUrl = user?.user_metadata?.avatar_url || "/default-avatar.png";
-
-  // Toggle Dark Mode
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -38,12 +29,12 @@ export default function ProfileDropdown({ user }) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg border z-50">
-          <div className="p-4 text-gray-800">
+        <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg border z-50">
+          <div className="p-4 text-gray-800 dark:text-white">
             <p className="font-bold">{displayName}</p>
-            <p className="text-gray-500 text-sm">{user.email}</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">{user.email}</p>
           </div>
-          <hr />
+          <hr className="border-gray-300 dark:border-gray-600" />
           <button
             onClick={() => router.push("/edit-profile")}
             className="block w-full text-left px-4 py-2 hover:bg-gray-200"
@@ -52,13 +43,13 @@ export default function ProfileDropdown({ user }) {
           </button>
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
           </button>
           <button
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-200"
+            className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             🚪 Logout
           </button>
