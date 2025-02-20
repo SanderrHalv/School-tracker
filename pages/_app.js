@@ -1,10 +1,10 @@
 import "../styles/globals.css";
-import { DarkModeProvider } from "../context/DarkModeContext"; // ✅ Import DarkModeProvider
+import { DarkModeProvider } from "../context/DarkModeContext";
 import AuthProvider from "../components/AuthProvider";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <DarkModeProvider> {/* ✅ Wrap entire app */}
+    <DarkModeProvider>
       <AuthProvider>
         <Component {...pageProps} />
       </AuthProvider>
