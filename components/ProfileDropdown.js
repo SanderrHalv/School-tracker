@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import { useRouter } from "next/navigation";
-import { useDarkMode } from "../context/DarkModeContext"; // Import Dark Mode Context
+//import { useDarkMode } from "../context/DarkModeContext"; // Import Dark Mode Context
 
 export default function ProfileDropdown({ user }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { isDarkMode, setIsDarkMode } = useDarkMode(); // Use Dark Mode Context
+  //const { isDarkMode, setIsDarkMode } = useDarkMode(); // Use Dark Mode Context
   const router = useRouter();
 
   const displayName = user?.user_metadata?.display_name || "User";
@@ -40,12 +40,6 @@ export default function ProfileDropdown({ user }) {
             className="block w-full text-left px-4 py-2 hover:bg-gray-200"
           >
             ✏️ Edit Profile
-          </button>
-          <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-          >
-            {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
           </button>
           <button
             onClick={handleLogout}

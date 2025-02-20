@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const DarkModeContext = createContext();
@@ -35,4 +35,4 @@ export function useDarkMode() {
     throw new Error("useDarkMode must be used within a DarkModeProvider");
   }
   return context;
-}
+}*/

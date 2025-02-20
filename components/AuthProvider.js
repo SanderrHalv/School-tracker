@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useRouter } from "next/navigation";
@@ -25,4 +25,4 @@ export default function AuthProvider({ children }) {
   if (!user) return null;
 
   return <>{children}</>;
-}
+}*/
