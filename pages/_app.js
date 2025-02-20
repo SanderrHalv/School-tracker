@@ -1,9 +1,13 @@
 import "../styles/globals.css";
-import { DarkModeProvider } from "../context/DarkModeContext"; // ✅ Import DarkModeProvider
-import AuthProvider from "../components/AuthProvider";
+import { DarkModeProvider } from "../context/DarkModeContext"; // ✅ Ensure this exists
+import AuthProvider from "../components/AuthProvider"; // ✅ Ensure this exists
 
 export default function MyApp({ Component, pageProps }) {
   return (
+    <DarkModeProvider>  {/* ✅ Wrap with DarkModeProvider */}
+      <AuthProvider>  {/* ✅ Wrap with AuthProvider */}
         <Component {...pageProps} />
+      </AuthProvider>
+    </DarkModeProvider>
   );
 }
