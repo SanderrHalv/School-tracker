@@ -48,23 +48,23 @@ export default function Dashboard() {
   return (
     <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-6">
       
-      {/* ✅ Profile Dropdown */}
+      {/* ✅ Profile Dropdown in Top-Left */}
       <div className="absolute top-4 left-4">
         <ProfileDropdown avatarUrl={avatarUrl} />
       </div>
 
-      {/* 📌 Grid Layout for Subjects & Recent Activity */}
-      <div className="grid grid-cols-2 gap-6 w-full max-w-4xl">
+      {/* 🎯 Mobile-Optimized Layout */}
+      <div className="flex flex-col w-full max-w-4xl gap-6">
         
-        {/* 🎯 Subjects Box */}
+        {/* 📌 Subjects Box */}
         <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg w-full">
           <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">Subjects</h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {subjects.map((subject, index) => (
               <div 
                 key={index} 
                 className={`p-4 rounded-lg text-white font-bold text-center cursor-pointer ${subject.color} shadow-md`}
-                onClick={() => router.push(`/subject/${subject.name.toLowerCase()}`)} // Navigate to Subject Page
+                onClick={() => router.push(`/subject/${subject.name.toLowerCase()}`)}
               >
                 {subject.name}
               </div>
@@ -87,9 +87,10 @@ export default function Dashboard() {
             </ul>
           )}
         </div>
+
       </div>
 
-      {/* ⚡ Empty Space Below for Future Features */}
+      {/* ⚡ Empty Space for Future Features */}
       <div className="w-full max-w-4xl h-40 mt-6"></div>
 
     </div>
