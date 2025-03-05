@@ -81,7 +81,7 @@ export default function SubjectPage() {
       </button>
 
       {/* 🏆 Leaderboard */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg text-black">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg text-black align-middle justify-center">
         <h3 className="text-xl font-bold">Leaderboard</h3>
         {leaderboard.length === 0 ? (
           <p className="text-gray-600 dark:text-gray-300 text-center">No entries yet.</p>
@@ -97,7 +97,7 @@ export default function SubjectPage() {
       </div>
 
       {/* ⏳ Add Hours Section */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mt-6">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mt-6 text-black">
         <h3 className="text-xl font-bold mb-2">Track Study Time</h3>
         <div className="flex space-x-2 mb-4">
           <select onChange={(e) => setHours(Number(e.target.value))} className="p-2 border rounded-md">

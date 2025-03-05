@@ -68,7 +68,7 @@ export default function EditProfile() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black">
             {/* Go Back Button */}
 
             <div className="bg-white p-8 shadow-lg rounded-lg w-full max-w-md">
