@@ -73,7 +73,7 @@ export default function SubjectPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
       
       <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-        {subject?.toUpperCase()} Leaderboard
+        {subject?.toUpperCase()}
       </h2>
 
       <button onClick={() => router.push("/dashboard")} className="text-blue-500 hover:underline mb-4">
@@ -81,8 +81,8 @@ export default function SubjectPage() {
       </button>
 
       {/* 🏆 Leaderboard */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
-        <h3 className="text-xl font-bold">Top Students</h3>
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg text-black">
+        <h3 className="text-xl font-bold">Leaderboard</h3>
         {leaderboard.length === 0 ? (
           <p className="text-gray-600 dark:text-gray-300 text-center">No entries yet.</p>
         ) : (
