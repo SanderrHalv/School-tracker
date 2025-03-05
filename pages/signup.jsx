@@ -54,21 +54,21 @@ export default function SignupPage() {
           <input
             type="text"
             placeholder="Display Name"
-            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:border-gray-600"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
           <input
             type="email"
             placeholder="Email"
-            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:border-gray-600"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:border-gray-600"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -86,12 +86,12 @@ export default function SignupPage() {
         {/* Google Signup Button */}
         <button
           onClick={handleGoogleSignup}
-          className="bg-red-500 text-white p-2 w-full rounded-md font-bold hover:bg-red-700 transition mt-4"
+          className="bg-blue-200 text-white p-2 w-full rounded-md font-bold hover:bg-red-700 transition mt-4"
         >
           Sign Up with Google
         </button>
 
-        <span className="mt-2 block text-center dark:text-white">
+        <span className="mt-2 block text-center">
           Already have an account?{" "}
           <a href="/" className="text-blue-500 hover:underline">Log in</a>
         </span>

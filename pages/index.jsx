@@ -40,14 +40,14 @@ export default function LoginPage() {
           <input
             type="email"
             placeholder="Email"
-            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:border-gray-600"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="border p-2 w-full rounded-md dark:bg-gray-700 dark:border-gray-600"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -60,7 +60,7 @@ export default function LoginPage() {
           </button>
         </form>
         <hr className="mt-6 rounded"></hr>
-        <span className="mt-3 dark:text-white">
+        <span className="mt-3">
           Don't have an account?{" "}
           <a href="/signup" className="text-blue-500 hover:underline">Create account</a>
         </span>
