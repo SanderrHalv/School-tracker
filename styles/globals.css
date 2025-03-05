@@ -20,25 +20,4 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Dark Mode Fix */
-.dark {
-  background-color: #1a202c;
-  color: white;
-}
-
-.dark .bg-white {
-  background-color: #2d3748 !important; /* Dark background */
-}
-
-.dark .text-gray-800 {
-  color: white !important; /* Light text */
-}
-
-.dark .border-gray-300 {
-  border-color: #4a5568 !important; /* Darker borders */
-}
-
-.dark .hover\:bg-gray-200:hover {
-  background-color: #4a5568 !important; /* Fix hover in dark mode */
-}
 
