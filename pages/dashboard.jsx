@@ -53,8 +53,8 @@ export default function Dashboard() {
         <ProfileDropdown avatarUrl={avatarUrl} />
       </div>
 
-      {/* 🎯 Mobile-Optimized Layout */}
-      <div className="flex flex-col w-full max-w-4xl gap-6">
+      {/* 🎯 Responsive Layout: Stack on Mobile, Side by Side on Desktop */}
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 w-full max-w-4xl">
         
         {/* 📌 Subjects Box */}
         <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg w-full">
