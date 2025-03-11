@@ -169,7 +169,7 @@ export default function Dashboard() {
                   .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) 
                   .slice(0, 3) 
                   .map((session, index) => (
-                    <li key={index} className="p-2 border-b border-gray-300 dark:border-gray-600">
+                    <li key={index} className="p-2 border-b border-gray-300 dark:border-gray-600 text-black">
                       <strong>{session.subjects?.subject || "Unknown Subject"}</strong> - {Math.round(session.total_hours)} hours. On the {new Date(session.created_at).toLocaleDateString()}
                     </li>
                   ))}
