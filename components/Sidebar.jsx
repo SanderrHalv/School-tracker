@@ -48,7 +48,7 @@ export default function Sidebar({ avatarUrl, setSidebarOpen }) {
               alt="User Avatar"
               className="w-12 h-12 rounded-full border-2 border-gray-300"
             />
-            <span className="text-lg font-bold">{user.displayName}</span>
+            <span className="text-lg font-bold">your name</span>
           </div>
 
           {/* Navigation Links */}
