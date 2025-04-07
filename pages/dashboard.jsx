@@ -176,7 +176,7 @@ export default function Dashboard() {
               </ul>
             )}
 
-            {/* 🔗 View All Activity Button */}
+            {/* View All Activity Button */}
             <div className="mt-4 text-center">
               <a href="/recent-activity" className="text-black hover:underline font-bold dark:text-white">
                 View All Activity →

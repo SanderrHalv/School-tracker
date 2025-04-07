@@ -1,11 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabase";
 
 export default function Sidebar({ avatarUrl, setSidebarOpen }) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (user) {
+        setUser(user);
+      }
+    };
+    fetchUser();
+  }, []);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -35,10 +46,10 @@ export default function Sidebar({ avatarUrl, setSidebarOpen }) {
             className="text-white text-lg self-end hover:text-gray-400"
             onClick={() => {
               setIsOpen(false);
-              if (setSidebarOpen) setSidebarOpen(false); // ✅ Only call if available
+              if (setSidebarOpen) setSidebarOpen(false); // Only call if available
             }}
           >
-            ✖
+            ←
           </button>
 
           {/* User Avatar */}
@@ -48,7 +59,9 @@ export default function Sidebar({ avatarUrl, setSidebarOpen }) {
               alt="User Avatar"
               className="w-12 h-12 rounded-full border-2 border-gray-300"
             />
-            <span className="text-lg font-bold">Your Name</span>
+            <span className="text-lg font-bold">
+              {user?.user_metadata?.display_name || "User"}
+            </span>
           </div>
 
           {/* Navigation Links */}

@@ -21,12 +21,12 @@ export default function SubjectPage() {
         router.push("/"); // Redirect if not logged in
         return;
       }
-      setUser(data.user); // ✅ Set user before fetching subject
+      setUser(data.user); // Set user before fetching subject
   
-      // ✅ Ensure subject is properly formatted (case-sensitive match)
+      // Ensure subject is properly formatted (case-sensitive match)
       const formattedSubject = subject?.trim();
   
-      // ✅ Fetch subject ID from Supabase
+      // Fetch subject ID from Supabase
       const { data: subjectData, error: subjectError } = await supabase
         .from("subjects")
         .select("id")
@@ -36,34 +36,35 @@ export default function SubjectPage() {
     
   
       if (subjectError) {
-        console.error("❌ Error fetching subject ID:", subjectError.message);
+        console.error(" Error fetching subject ID:", subjectError.message);
       } else if (subjectData?.id) {
-        console.log("✅ Found subject:", subjectData);
-        setSubjectId(subjectData.id); // ✅ Set correct subject ID
-        fetchLeaderboard(subjectData.id); // ✅ Fetch leaderboard
+        console.log(" Found subject:", subjectData);
+        setSubjectId(subjectData.id); // Set correct subject ID
+        fetchLeaderboard(subjectData.id); // Fetch leaderboard
       } else {
-        console.warn(`⚠ No subject found for: ${formattedSubject}`);
-        setSubjectId(null); // ✅ Ensure `subjectId` is null if not found
+        console.warn(` No subject found for: ${formattedSubject}`);
+        setSubjectId(null); // Ensure `subjectId` is null if not found
       }
     }
   
     if (subject) fetchUserAndSubject();
   }, [subject]);  
 
-  // ✅ Fetch leaderboard filtered by `subject_id`
+  // Fetch leaderboard filtered by `subject_id`
   async function fetchLeaderboard(subjectId) {
     const { data, error } = await supabase
-      .from("study_sessions_with_users") // ✅ Query the view, not study_sessions
-      .select("user_id, total_hours, email") // ✅ Use `email` since display_name isn't in `auth.users` by default
+      .from("study_sessions_with_users") // Query the view, not study_sessions
+      .select("user_id, total_hours, email") // Use `email` since display_name isn't in `auth.users` by default
       .eq("subject_id", subjectId)
       .order("total_hours", { ascending: false });
   
     if (error) {
-      console.error("❌ Error fetching leaderboard:", error);
+      console.error("Error fetching leaderboard:", error);
     } else {
       const formattedLeaderboard = data.map((entry) => ({
         user_id: entry.user_id,
-        display_name: entry.email || `User ${entry.user_id.slice(0, 6)}`, // ✅ Use email as display name
+        display_name: user?.user_metadata?.display_name || "user", // Use display_name from user metadata
+        email: entry.email,
         total_hours: entry.total_hours,
       }));
   
@@ -71,7 +72,7 @@ export default function SubjectPage() {
     }
   }  
 
-  // ✅ Add Study Hours
+  // Add Study Hours
   async function addHours() {
     if (hours === 0 && minutes === 0) {
       alert("Please enter a valid study time.");
@@ -93,7 +94,7 @@ export default function SubjectPage() {
     const { error } = await supabase.from("study_sessions").insert([
       {
         user_id: user.id,
-        subject_id: subjectId, // ✅ Correct subject_id
+        subject_id: subjectId, // Correct subject_id
         total_hours: totalTime,
         start_time: new Date(),
         end_time: new Date(),
@@ -105,7 +106,7 @@ export default function SubjectPage() {
       alert("Failed to save hours: " + error.message);
     } else {
       alert("Hours added successfully!");
-      fetchLeaderboard(subjectId); // ✅ Refresh leaderboard without full reload
+      fetchLeaderboard(subjectId); // Refresh leaderboard without full reload
     }
   }  
 
@@ -125,7 +126,7 @@ export default function SubjectPage() {
         ← Back to Dashboard
       </button>
 
-      {/* ✅ Leaderboard */}
+      {/* Leaderboard */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg text-black">
         <h3 className="text-xl font-bold">Leaderboard</h3>
         {leaderboard.length === 0 ? (
@@ -133,7 +134,7 @@ export default function SubjectPage() {
         ) : (
           <ul>
             {leaderboard
-              .sort((a, b) => b.total_hours - a.total_hours) // ✅ Sort from highest to lowest
+              .sort((a, b) => b.total_hours - a.total_hours) // Sort from highest to lowest
               .map((entry, index) => (
                 <li key={index} className="p-2 border-b border-gray-300 dark:border-gray-600">
                   <strong>{index + 1}.</strong> {entry.display_name} - {entry.total_hours.toFixed(1)} hrs
@@ -143,7 +144,7 @@ export default function SubjectPage() {
         )}
       </div>
 
-      {/* ✅ Add Hours Section */}
+      {/* Add Hours Section */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mt-6 text-black">
         <h3 className="text-xl font-bold mb-2">Track Study Time</h3>
         <div className="flex space-x-2 mb-4">
