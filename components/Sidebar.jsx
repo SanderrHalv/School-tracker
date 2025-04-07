@@ -59,9 +59,13 @@ export default function Sidebar({ avatarUrl, setSidebarOpen }) {
               alt="User Avatar"
               className="w-12 h-12 rounded-full border-2 border-gray-300"
             />
+<<<<<<< HEAD
             <span className="text-lg font-bold">
               {user?.user_metadata?.display_name || "User"}
             </span>
+=======
+            <span className="text-lg font-bold">your name</span>
+>>>>>>> ef39d2a74a023073f5d6b526f7287d4be10d66dd
           </div>
 
           {/* Navigation Links */}
