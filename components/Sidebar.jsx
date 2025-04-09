@@ -25,7 +25,7 @@ export default function Sidebar({ avatarUrl, setSidebarOpen }) {
 
   return (
     <>
-      {/* ☰ Button (Only Visible When Sidebar is Collapsed) */}
+      {/* ☰ Button (Only Visible When Sidebar is Collapsed) */} 
       {!isOpen && (
         <button 
           className="text-white bg-gray-800 p-3 rounded-md m-4 fixed top-4 left-4 z-50 hover:bg-gray-700 transition"
